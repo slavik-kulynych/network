@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
+        <link href="{% static 'network/styles22.css' %}" rel="stylesheet">
+        <link href="{% static 'network/bokiss_menu5.css' %}" rel="stylesheet">
+        <link href="{% static 'network/pagination1.css' %}" rel="stylesheet">
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+
+            <a class="sait_name" href="#">Chain</a>
+          
+            <div>
+              <ul class="menu_ul">
+                {% if user.is_authenticated %}
+                    <li class="menu_li">
+                        <a class="menu_a_nameuser" href="#"><strong>{{ user.username|capfirst }}</strong></a>
+                    </li>
+                
+                <li class="menu_li">
+                  <a id="posts_sub_menu" class="menu_a" href="#">⛓ Posts</a>
+                  <ul class="menu_ul">⛓
+                    <li class="menu_li"><a id="allposts" class="menu_a sub_menu_a" href="{% url 'index' %}">All Posts</a>⛓</li>
+                    <li class="menu_li"><a id="myposts" class="menu_a sub_menu_a" href="#">My Posts / Create new</a>⛓</li>
+                    <li class="menu_li"><a class="menu_a sub_menu_a" href="#">something else</a></li>
+                </ul>
+                </li>
+                {% else %}
+                <li class="menu_li">
+                    <a id="not_authenticated" class="menu_a" href="{% url 'index' %}"></a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="menu_li">
+                        <a id="following" class="menu_a" href="#">Following</a>
+                    </li>
+                    <li class="menu_li">
+                        <a class="menu_a" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="menu_li">
+                        <a class="menu_a" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="menu_li">
+                        <a class="menu_a" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+        
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

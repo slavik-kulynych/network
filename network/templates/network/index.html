@@ -1,0 +1,110 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'network/inbox25.js' %}" type="module"></script>
+{% endblock %}
+
+{% block body %}
+<div class="splitblockrow2">
+
+    <div class="leftblockcolumn">
+<!--========================================================================================-->
+      {% if user.is_authenticated %}
+      <div id="compose-post">
+        <form id="post-form">
+          {% csrf_token %}
+          <textarea class="form-control" id="compose-body" placeholder="New Post...->"></textarea>
+          <input type="hidden" id="user-id" name="userid" value="{{ user.id }}" form="post-form">
+          <input type="hidden" id="user-name" name="username" value="{{ user.username|capfirst }}" form="post-form">
+          <input type="button" class="circle" value=">>"/>
+      </form>
+      </div>
+      {% endif %}
+      <!--========================================================================================-->
+      <div class="posts">
+        <strong>"CHAIN"</strong> - is an Ukrainian microblogging and social networking service on which users post and
+         interact with messages like "tweets".  Registered users can post, like tweets. Users interact with CHAIN through browser
+         or mobile frontend software. The service is provided by
+           CHAIN, INC, a corporation based in San Kirovogrado, Ukraine, and has more than 25 offices around the world. Tweets
+            were originally restricted to 140 characters.
+            <br>
+            <br>
+            <h6>You want to known more ? </h6>
+            <h4>Then register and join wiht us !</h4>
+      </div>
+
+
+      {% if user.is_authenticated %}
+      <div id="nav_page">
+
+        <nav aria-label="...">
+          <ul class="pagination">
+            <li class="page-item disabled" id="previous">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="return false">Previous</a>
+            </li>
+            <li class="page-item active" id="pageleft"><a class="page-link" href="#" onclick="return false">1</a></li>
+            <li class="page-item" id="pagemiddle">
+              <a class="page-link" href="#" onclick="return false">2</a>
+            </li>
+            <li class="page-item" id="pageright"><a class="page-link" href="#" onclick="return false">3</a></li>
+            <li class="page-item" id="next">
+              <a class="page-link" href="#" onclick="return false">Next</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+      {% endif %}
+
+
+<!--========================================================================================-->
+    </div>
+
+
+
+    {% if user.is_authenticated %}
+<!--========================================================================================-->
+    <div class="rightblockcolumn" id="rightblockcolumn_id">
+      <div class="info_block" id="info_block_id">
+
+        <div class="info_1">
+        <div class="info_name" id="info_name_id">name</div>
+        <div class="info_subscribe">subscribe</div>
+        <div class="info_unsubscribe">unsubscribe</div>
+        </div>
+
+        <div class="info_2">
+          <span class="info_posts_span"></span>
+          <div class="info_posts" id="info_posts_id">Posts:</div>
+          <span class="info_likes_span"></span>
+          <div class="info_likes" id="info_likes_id">Likes:</div>
+        </div>
+
+        <div class="info_3">
+          <span class="info_following_span"></span>
+          <div class="info_following" id="info_following_id">Following:</div>
+          <span class="info_followers_span"></span>
+          <div class="info_followers" id="info_followers_id">Followers:</div>
+        </div>
+
+        <div class="info_4">
+          <div class="info_list_following" id="info_list_following_id">Following list:</div>
+          <div class="info_list_followers" id="info_list_followers_id">Followers list:</div>
+        </div>
+      </div>
+    </div>
+<!--========================================================================================-->
+    {% endif %}
+
+
+
+
+
+  </div>
+<!--========================================================================================-->
+  <div class="edit_textarea">
+    <textarea class="correct_textarea"></textarea>
+  </div>
+<!--========================================================================================-->
+{% endblock %}

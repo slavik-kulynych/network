@@ -1,0 +1,45 @@
+.page-item .page-link {
+    z-index: 8001;
+}
+
+.page-item.active .page-link {
+    z-index: 8001;
+    color: #fff;
+    background-color: #9B20FF;
+    border-color: #9B20FF;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #fff;
+    background-color: #555;
+    border: 1px solid #677B27;
+    z-index: 8001;
+}
+
+.page-link:hover {
+    z-index: 8000;
+    color: #ffae00;
+    text-decoration: none;
+    background-color: #9B20FF;
+    border-color: #52f108;
+}
+
+.page-link:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(155 32 255 / 25%);
+}
+/*-----------------------------------------------*/
+
+body {
+    background-color: #555;
+}
+
+.disabled{
+    pointer-events:none;
+    /*opacity:0.7;*/
+}
